@@ -3,7 +3,7 @@ URL = "http://localhost:3000/ramens"
 const ramenMenu = document.querySelector("#ramen-menu")
 const ramenDetail = document.querySelector('#ramen-detail')
 const newRamenForm = document.querySelector('#new-ramen')
-
+const deleteRamen = document.querySelector('#delete-ramen')
 
 
 document.addEventListener("DOMContentLoaded", (event => {
@@ -22,6 +22,13 @@ document.addEventListener("DOMContentLoaded", (event => {
       ramenDiv.addEventListener("click", (event)=>{
         ramenTargetObject = ramenArray.find(ramen => ramen.id == event.target.id)
         showRamenInfo(ramenTargetObject)
+
+        deleteRamen.addEventListener('click', (event =>{
+          return fetch(`${URL}/${ramenTargetObject.id}`, {
+            method: 'DELETE'})
+          .then(data => alert("Deleted!"))
+          // location.reload()
+        }))
       })
     
       function showRamenInfo(ramenTargetObject) {
@@ -58,6 +65,8 @@ document.addEventListener("DOMContentLoaded", (event => {
       body: JSON.stringify(newRamenData)
     })
   }))
+
+  
 
 }
 
