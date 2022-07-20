@@ -33,6 +33,13 @@ function displayRamen(ramenArray) {
       const comment = document.querySelector('#comment-display')
       comment.innerText = ramenTargetObject.comment
     }
+
+    window.addEventListener("DOMContentLoaded", (event => {
+      console.log("Howdy!")
+      // const highestRamen = Math.max(ramenArray.map(ramen => ramen.rating))
+      // console.log(highestRamen)
+      // showRamenInfo(highestRamen)
+    }))
   
     ramenMenu.appendChild(ramenDiv)
 }
@@ -54,6 +61,7 @@ newRamenForm.addEventListener("submit", (event => {
     body: JSON.stringify(newRamenData)
   })
 }))
+
 
 
 }
